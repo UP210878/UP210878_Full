@@ -45,4 +45,14 @@ public class ClienteController {
         return "lista"; // lista.html
     }
 
+    @GetMapping({ "/ordenado" })
+    public ResponseEntity<List<Cliente>> getOrdenado() {
+        return ResponseEntity.ok(clienteService.getOrdenado());
+    }    
+
+    @GetMapping({ "/mayusculas" })
+    public ResponseEntity<List<Cliente>> getMayusculas() {
+        return ResponseEntity.ok(clienteService.getMayusculas());
+    }
+    
 }

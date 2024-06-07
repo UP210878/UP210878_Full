@@ -25,4 +25,16 @@ public class ClienteService {
     public Optional<Cliente> getCliente(Long id) {
         return clienteRepository.findById(id);    }
     
+    public List<Cliente> getOrdenado() {
+        List<Cliente> listaClientes = clienteRepository.findAll();
+        listaClientes.sort((cliente1, cliente2) -> cliente1.getNombre().compareTo(cliente2.getNombre()));
+        return listaClientes;
+    }
+
+    public List<Cliente> getMayusculas() {
+        List<Cliente> listaClientes = clienteRepository.findAll();
+        listaClientes.forEach(cliente -> cliente.setNombre(cliente.getNombre().toUpperCase()));
+        listaClientes.forEach(cliente -> cliente.setApellido(cliente.getApellido().toUpperCase()));
+        return listaClientes;
+    }
 }
